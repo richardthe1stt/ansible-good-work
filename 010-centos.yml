@@ -1,0 +1,40 @@
+---
+- name: Install and Configure Apache Web Server
+  hosts: m4
+  become: yes
+  
+  tasks:
+  - name: Install Apache (httpd)
+    dnf:
+      name: httpd
+      state: present
+
+  - name: Start and Enable Apache Service
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+
+  - name: Allow HTTP and HTTPS through Firewall
+    firewalld:
+      service: "{{ item }}"
+      permanent: yes
+      state: enabled
+      loop:
+        - http
+        - https
+
+  - name: Reload Firewall
+    command: firewall-cmd --reload
+
+  - name: Deploy a Basic HTML Page
+    copy:
+      content: "<h1>Welcome to Apache on CentOS 9</h1>"
+      dest: /var/www/html/index.html
+
+  - name: Restart Apache Service
+    service:
+      name: httpd
+      state: restarted
+...
+
