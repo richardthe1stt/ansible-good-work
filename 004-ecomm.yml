@@ -1,0 +1,17 @@
+---
+- name: Deloy Web App
+  hosts: m2
+  become: yes
+
+  tasks:
+  - name: Install Git
+    yum:
+      name: git 
+      state: present
+
+  - name: Host code
+    git:
+      repo: https://github.com/richardthe1stt/ansible-good-work.git
+      dest: /var/www/html
+
+...
