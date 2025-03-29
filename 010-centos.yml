@@ -1,21 +1,21 @@
 ---
 - name: Install HTTP server
-  hosts: m4
+  hosts: m2
   become: yes
 
   tasks:
-  - name: Install Apache
+  - name: Install HTTPD
     yum:
-      name: apache
+      name: httpd 
       state: present
 
-  - name: start apache
+  - name: start httpd
     service:
-      name: apache
+      name: httpd
       state: started
 
-  - name: Enable apache
+  - name: Enable httpd
     service:
-      name: apache
+      name: httpd
       enabled: yes
 ...
