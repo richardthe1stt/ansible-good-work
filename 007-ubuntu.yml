@@ -1,0 +1,22 @@
+---
+- name: Install HTTP server
+  hosts: m1
+  become: yes
+
+  tasks:
+  - name: Install Apache2
+    apt:
+      name: apache2 
+      state: present
+
+  - name: start apache2
+    service:
+      name: apache2
+      state: started
+
+  - name: Enable apache2
+    service:
+      name: apache2
+      enabled: yes
+...
+
