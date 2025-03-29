@@ -1,0 +1,9 @@
+---
+- name: Deloy php App
+  hosts: m6
+  become: yes
+
+  roles:
+  - apache
+  - php
+...

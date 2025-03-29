@@ -1,0 +1,9 @@
+---
+- name: Deloy Web App
+  hosts: m6
+  become: yes
+
+  roles:
+  - apache
+  - html
+...
