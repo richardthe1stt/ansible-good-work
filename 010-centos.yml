@@ -5,7 +5,7 @@
 
   tasks:
   - name: Install Apache
-    apt:
+    yum:
       name: apache
       state: present
 
@@ -19,4 +19,3 @@
       name: apache
       enabled: yes
 ...
-
