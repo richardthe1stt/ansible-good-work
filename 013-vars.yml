@@ -3,7 +3,7 @@
   hosts: g1
   become: yes
   vars: 
-  myusername: richNESS
+    myusername: richNESS
 
   tasks:
   - name: Update Dynamic page
